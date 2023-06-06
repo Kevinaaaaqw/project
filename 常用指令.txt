@@ -1,0 +1,5 @@
+npm init -y
+npm install express
+npm ejs -v
+npm install ejs
+npm list -s --depth=1
