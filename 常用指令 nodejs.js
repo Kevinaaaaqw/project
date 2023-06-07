@@ -86,6 +86,17 @@ app.get('/:app',function(req,res){
         res.render("job", JSON.stringify(data));
     })
 })
-res.render("job", {TYPE: req.params.type});
 
 //P.S 上面是生成一個網頁，另外關於有一個搜尋頁自動生產頁簽讓其可以連到上面的網頁也適用類似方法
+
+
+//常用指令十一(計算整筆資料數目)
+
+
+    //                 計算數目                    
+    coon.query("select count(*) from 資料表名稱 "     ,[],function(err,data){
+        //將資料回傳是字串現在把她轉成數字
+        data = parseInt(data);
+        //假設一頁有10筆資料總共會有幾頁
+        data/10
+    })
