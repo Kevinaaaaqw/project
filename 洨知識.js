@@ -1,0 +1,1 @@
+console.log(aaa,bbb,ccc)//console.log()用逗號各開相當於使用多個console.log()

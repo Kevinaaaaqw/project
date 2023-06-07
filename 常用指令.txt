@@ -1,5 +1,6 @@
 npm init -y
 npm install express
-npm ejs -v
+npm install mysql
 npm install ejs
+npm install multer
 npm list -s --depth=1
