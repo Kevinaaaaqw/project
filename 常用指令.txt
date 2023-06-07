@@ -3,4 +3,6 @@ npm install express
 npm install mysql
 npm install ejs
 npm install multer
-npm list -s --depth=1
+npm list express
+npm list mysql
+npm list multer
