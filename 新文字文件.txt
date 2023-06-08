@@ -1,0 +1,16 @@
+. 路由計算
+    小組的大專草稿→
+    計算有幾個*.html頁面               =>  (假設) 一個*.html就一個路由
+    計算一個.html頁面有幾個功能 =>  (假設) 一個功能也是一個路由
+    該如何分類路由？
+
+ 
+
+. 請試著描述底下使用過的 方法 or 屬性
+【res有哪些方法可以使用】           【req有屬性哪些可以使用】
+    1. res.write()                                          1. req.url
+    2. res.end()                                            2. req.params
+    3. res.send()                                          3. req.body 
+    4. res.sendfile()                                    4. req.query     
+    5. res.render()                                       5. req.session  => 新登場     
+    6. res.redirect()=> 新登場                 6. req.locals     => 新登場

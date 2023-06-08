@@ -100,3 +100,14 @@ app.get('/:app',function(req,res){
         //假設一頁有10筆資料總共會有幾頁
         data/10
     })
+
+
+//常用指令十二，小組管理專案分工需要架設分業系統
+//做一個路由分支
+var page = express.Router()
+//開始架設份派到自己的業務
+page.get('/',function(req,res){
+    res.send('分工人一做的')
+})
+//輸出檔案給人彙整
+module.exports = page
