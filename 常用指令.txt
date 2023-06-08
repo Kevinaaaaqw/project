@@ -4,6 +4,7 @@ npm install mysql
 npm install ejs
 npm install multer
 npm install body-parser --save
+npm install express express-session
 npm list express
 npm list mysql
 npm list multer
