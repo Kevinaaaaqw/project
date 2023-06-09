@@ -1,10 +1,16 @@
 npm init -y
-npm install express
-npm install mysql
-npm install ejs
-npm install multer
+npm install express ejs mysql multer express-session cor
 npm install body-parser --save
-npm install express express-session
 npm list express
 npm list mysql
 npm list multer
+
+
+
+
+    express             //功能:架設伺服器
+    ejs                 //功能:網頁渲染
+    mysql               //功能:MYSQL資料庫
+    multer              //功能:文件上傳到伺服器
+    express-session     //功能:session網頁記憶體站存功能
+    cor                 //功能:開放不同源網頁使用功能

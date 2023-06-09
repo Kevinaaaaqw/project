@@ -39,7 +39,9 @@
 
 
 
-
+mkdir member
+mkdir views
+mkdir
 
 
 
