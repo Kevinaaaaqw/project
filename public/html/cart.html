@@ -17,25 +17,219 @@
       crossorigin="anonymous"
     ></script>
     <style>
-        *{
-        font-size: 1.1rem;    
-        }
+      body {
+        font-size: 2rem;
+      }
+      .img1000 {
+        width: 1000px;
+      }
+      .img40 {
+        margin: 30px;
+        width: 40px;
+        height: 40px;
+      }
+      .img100 {
+        width: 100px;
+      }
+      .borderclass {
+        border: 2px solid black;
+      }
+      .borderclass_1 {
+        border-bottom: 2px solid black;
+      }
+      .check {
+        border: 1px solid red;
+      }
     </style>
   </head>
-  <body class="bg-info">
+  <body class="">
+    <!-- 導覽列 -->
     <div class="bg-body d-flex col-12 align-items-center">
-      <div class="col-3 ps-3 pe-3"><img src="../img/icon/fakelogo.png" alt="" /></div>
-      <div class="col-9 d-flex justify-content-end align-items-center ">
+      <div class="col-3 ps-3 pe-3">
+        <img src="../img/icon/fakelogo.png" alt="" />
+      </div>
+      <div class="col-9 d-flex justify-content-end align-items-center">
         <div class="p-3">
-            <a href="" class="ps-3 pe-3">租借列表</a>
-            <a href="" class="ps-3 pe-3">快速上架</a>
-            <a href="" class="ps-3 pe-3">關於我們</a>
+          <a href="" class="ps-3 pe-3">租借列表</a>
+          <a href="" class="ps-3 pe-3">快速上架</a>
+          <a href="" class="ps-3 pe-3">關於我們</a>
         </div>
         <div>
-            <img class="ps-3 pe-3" src="../img/icon/Heart.png" alt="">
-            <img class="ps-3 pe-3" src="../img/icon/cart 4.png" alt="">
-            <img class="ps-3 pe-3" src="../img/icon/user-interface 4.png" alt="">
+          <img class="ps-3 pe-3" src="../img/icon/Heart.png" alt="" />
+          <img class="ps-3 pe-3" src="../img/icon/cart 4.png" alt="" />
+          <img
+            class="ps-3 pe-3"
+            src="../img/icon/user-interface 4.png"
+            alt=""
+          />
         </div>
+      </div>
+    </div>
+
+    <!-- 購物車本體 -->
+    <div class="col-12 p-4">
+      <div class="d-flex align-items-center">
+        <div class="p-4 col-3">購物車</div>
+        <img
+          class="p-4 col-9 d-flex justify-content-center img1000"
+          src="../img/icon/Group 322.png"
+          alt=""
+        />
+      </div>
+      <div class="p-4">
+        <form class="col-12" action="" method="put" id="product">
+          <!-- 資料庫重複排版資料 -->
+          <div class="borderclass mt-2">
+            <div class="d-flex ps-5 pe-5 align-items-center borderclass_1">
+              <input class="img40" type="checkbox" id="UID001" /><a href=""
+                ><img class="img40" src="../img/icon/Home.png" alt=""
+              /></a>
+              <div>賣家123</div>
+              <div class="p-4">聯絡賣家</div>
+            </div>
+            
+            <!-- 商品資訊 -->
+            <div class="d-flex justify-content-between p-5 align-items-center">
+              <input class="img40" type="checkbox" id="UID001PID001" />
+              <img
+                class="img100"
+                src="../img/product/coffee006冰滴咖啡去背.png"
+                alt=""
+                />
+              <div class="p-4">商品aaa</div>
+              <div class="p-4">
+                <div>租借日期</div>
+                <div>2023/05/27</div>
+              </div>
+              <div class="p-4">
+                <div>歸還日期</div>
+                <div>2023/05/29</div>
+              </div>
+              <div class="p-4">
+                <div>天數</div>
+                <div>3天</div>
+              </div>
+              <div class="p-4">
+                <div>租金</div>
+                <div>300元</div>
+              </div>
+              <div class="p-4">
+                <div>押金</div>
+                <div>200元</div>
+              </div>
+              <div>刪除</div>
+            </div>
+            
+                          <!-- 商品資訊 -->
+            <div class="d-flex justify-content-between p-5 align-items-center">
+              <input class="img40" type="checkbox" id="UID001PID001" />
+              <img
+                class="img100"
+                src="../img/product/coffee006冰滴咖啡去背.png"
+                alt=""
+              />
+              <div class="p-4">商品aaa</div>
+              <div class="p-4">
+                <div>租借日期</div>
+                <div>2023/05/27</div>
+              </div>
+              <div class="p-4">
+                <div>歸還日期</div>
+                <div>2023/05/29</div>
+              </div>
+              <div class="p-4">
+                <div>天數</div>
+                <div>3天</div>
+              </div>
+              <div class="p-4">
+                <div>租金</div>
+                <div>300元</div>
+              </div>
+              <div class="p-4">
+                <div>押金</div>
+                <div>200元</div>
+              </div>
+              <div>刪除</div>
+            </div>
+          </div>
+          <div class="borderclass mt-2">
+            <div class="d-flex ps-5 pe-5 align-items-center borderclass_1">
+              <input class="img40" type="checkbox" id="UID001" /><a href=""
+                ><img class="img40" src="../img/icon/Home.png" alt=""
+              /></a>
+              <div>賣家123</div>
+              <div class="p-4">聯絡賣家</div>
+            </div>
+            
+                          <!-- 商品資訊 -->
+            <div class="d-flex justify-content-between p-5 align-items-center">
+              <input class="img40" type="checkbox" id="UID001PID001" />
+              <img
+                class="img100"
+                src="../img/product/coffee006冰滴咖啡去背.png"
+                alt=""
+              />
+              <div class="p-4">商品aaa</div>
+              <div class="p-4">
+                <div>租借日期</div>
+                <div>2023/05/27</div>
+              </div>
+              <div class="p-4">
+                <div>歸還日期</div>
+                <div>2023/05/29</div>
+              </div>
+              <div class="p-4">
+                <div>天數</div>
+                <div>3天</div>
+              </div>
+              <div class="p-4">
+                <div>租金</div>
+                <div>300元</div>
+              </div>
+              <div class="p-4">
+                <div>押金</div>
+                <div>200元</div>
+              </div>
+              <div>刪除</div>
+            </div>
+            
+                          <!-- 商品資訊 -->
+            <div class="d-flex justify-content-between p-5 align-items-center">
+              <input class="img40" type="checkbox" id="UID001PID001" />
+              <img
+                class="img100"
+                src="../img/product/coffee006冰滴咖啡去背.png"
+                alt=""
+              />
+              <div class="p-4">商品aaa</div>
+              <div class="p-4">
+                <div>租借日期</div>
+                <div>2023/05/27</div>
+              </div>
+              <div class="p-4">
+                <div>歸還日期</div>
+                <div>2023/05/29</div>
+              </div>
+              <div class="p-4">
+                <div>天數</div>
+                <div>3天</div>
+              </div>
+              <div class="p-4">
+                <div>租金</div>
+                <div>300元</div>
+              </div>
+              <div class="p-4">
+                <div>押金</div>
+                <div>200元</div>
+              </div>
+              <div>刪除</div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="ps-5 d-flex align-items-center"><input class="img40" type="checkbox">全選</div>
+            <div>總計(4樣商品):2000元 <button>下一步</button></div>
+          </div>
+        </form>
       </div>
     </div>
     <script></script>
