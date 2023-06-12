@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>信用卡</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.css"
+      integrity="sha512-lp6wLpq/o3UVdgb9txVgXUTsvs0Fj1YfelAbza2Kl/aQHbNnfTYPMLiQRvy3i+3IigMby34mtcvcrh31U50nRw=="
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
+      integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw=="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../css/css.css" />
+  </head>
+  <body>
+    <div class="col-12 d-flex justify-content-center">
+      <form
+        action=""
+        method="post"
+        class="borderclass container p-4 img900 d-flex flex-wrap"
+      >
+        <div class="col-12 text-center">信用卡</div>
+        <div
+          id="卡號1"
+          class="d-flex col-12 justify-content-between align-items-center"
+        >
+          <div class="d-flex">
+            <div class="pe-3">卡號:</div>
+            <div>1111-2222-3333-4444</div>
+          </div>
+          <div class="">
+            <button class="ps-2 pe-2 pt-1 pb-1 m-4 rounded-2">更改</button
+            ><button class="ps-2 pe-2 pt-1 pb-1 m-4 rounded-2">刪除</button>
+          </div>
+        </div>
+        <div class="borderclass_1 border-dark-subtle mt-5 mb-5 col-12"></div>
+        <div class="col-12 d-flex justify-content-end">
+          <button class="me-4 rounded-2">新增信用卡</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-12 mt-5 d-flex justify-content-center">
+      <form
+        action=""
+        method="post"
+        class="borderclass container p-4 mb-5 img900 d-flex flex-wrap"
+      >
+        <div class="col-12 text-center">新增信用卡</div>
+        <div class="d-flex col-12 pt-5">
+          <div class="col-2 me-2">卡號:</div>
+          <div class="col-9">
+            <input
+              class="col-12"
+              placeholder="1111-2222-3333-4444"
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="d-flex col-12 pt-5">
+          <div class="col-2 me-2">卡號:</div>
+          <div class="col-2">
+            <input class="col-12" placeholder="MM/YY" type="text" />
+          </div>
+          <div class="col-3 ps-5 me-2">安全號碼:</div>
+          <div class="col-2">
+            <input class="col-12" placeholder="000" type="text" />
+          </div>
+        </div>
+        <div class="d-flex col-12 pt-5">
+          <div class="col-2 me-2">姓名:</div>
+          <div class="col-9">
+            <input class="col-12" placeholder="英文姓名" type="text" />
+          </div>
+        </div>
+        <div class="d-flex col-12 pt-5 flex-wrap">
+          <div class="col-2 me-2 ">帳單地址:</div>
+          <select class="col-2 me-4">
+            <option value="1">1</option>
+            <option value="1">1</option>
+          </select>
+          <select class="col-2">
+            <option value="1">1</option>
+            <option value="1">1</option>
+          </select>
+          <div class="ms-4 col-4">
+            郵遞區號:515
+          </div>
+          <div class="col-12 d-flex pt-3">
+            <div class="col-2 me-2"></div><input class="col-9" placeholder="安安路安安巷7號" type="text" />
+          </div>
+          <div class="col-12 d-flex justify-content-center">
+            <button class="m-5" type="reset">取消</button
+            ><button class="m-5" type="submit">新增</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
