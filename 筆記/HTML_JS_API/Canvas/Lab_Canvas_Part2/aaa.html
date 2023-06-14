@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Insert title here</title>
+
+</head>
+
+<body>
+
+    <canvas id="surface" width="600" height="400"></canvas>
+
+    <script>
+
+
+
+
+        var ball = {
+
+            x : 10,
+
+            y : 10,
+
+            r : 10,
+
+            vx : 2,
+
+            vy : 3
+
+        }
+
+
+
+
+        var canvas = document.getElementById("surface");
+
+        var ctx = canvas.getContext('2d');
+
+
+
+
+        setInterval(function() {
+
+            if (ball.y + ball.r > surface.height) { // ball hit bottom
+
+                ball.vy = -1 * ball.vy;
+
+            }
+            if (ball.y -ball.r<0) { 
+
+                ball.vy = -1 * ball.vy;
+
+            }
+            if (ball.x + ball.r > surface.width) { 
+
+                ball.vx = -1 * ball.vx;
+
+            }
+            if (ball.x -ball.r<0) { 
+
+                ball.vx = -1 * ball.vx;
+
+            }
+
+            ball.x += ball.vx;
+
+            ball.y += ball.vy;
+
+
+
+
+            ctx.fillStyle = "black";
+
+            ctx.fillRect(0, 0, surface.width, surface.height);
+
+            ctx.beginPath();
+
+            ctx.arc(ball.x, ball.y, ball.r, 0, 2 * Math.PI);
+
+            ctx.strokeStyle = "white";
+
+            ctx.stroke();
+
+        }, 1000/60 );
+        document.onkeydown=(function(e){
+            console.log(e.keyCode)
+        })
+    </script>
+
+
+
+
+</body>
+
+</html>
