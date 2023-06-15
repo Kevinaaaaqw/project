@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>header</title>
+    <!-- 引用各種連結 -->
+    <%- include('cart/link')%>
+  </head>
+  <body>
+    <!-- 至頂導覽列框架 -->
+    <div
+      id="fixedTop"
+      style="transition: 1s"
+      class="bg-body d-flex col-12 align-items-center fixed-top"
+    >
+      <div class="col-3 ps-3 pe-3">
+        <a href="/"><img src="../public/img/icon/fakelogo.png" alt="" /></a>
+      </div>
+      <div class="col-9 d-flex justify-content-end align-items-center">
+        <div class="p-3">
+          <a href="" class="ps-3 pe-3">租借列表</a>
+          <a href="" class="ps-3 pe-3">快速上架</a>
+          <a href="" class="ps-3 pe-3">關於我們</a>
+        </div>
+        <div>
+          <img class="ps-3 pe-3" src="../public/img/icon/Heart.png" alt="" />
+          <a href="/cart"
+            ><img class="ps-3 pe-3" src="../public/img/icon/cart 4.png" alt=""
+          /></a>
+          <img
+            class="ps-3 pe-3"
+            src="../public/img/icon/user-interface 4.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 200px"></div>
+    <script>
+      $(function () {
+        window.onscroll = function (e) {
+          if (scrollY > 0) {
+            $("#fixedTop").addClass("changeActive");
+          } else {
+            $("#fixedTop").removeClass("changeActive");
+          }
+        };
+      });
+    </script>
+  </body>
+</html>

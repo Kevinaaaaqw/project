@@ -3,6 +3,6 @@ var coon = mysql.createConnection({               //連接資料庫
     host:'localhost',                              //連接地址
     user : "root",                                //使用者名稱
     password : "1234",                            //密碼
-    database : "newaddress"                             //連接資料庫名稱
+    database : "aaaaa"                             //連接資料庫名稱
 })
 module.exports = coon

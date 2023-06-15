@@ -4,11 +4,15 @@ var urlencoded = bodyParser.urlencoded()
 var querystring = require('querystring')
 var coon = require('./routes/db')
 var page = require('./routes/cart.js')
-var app=express()//架設伺服器測試用
+var app=express()
+app.set('view engine','ejs')
 app.use('/public',express.static('public'))
-app.set('view engine','ejs')//架設伺服器測試用 exports page 後就沒有用了
-app.use('/a',page)//架設伺服器測試用 exports page 後就沒有用了
-app.use(urlencoded)//架設伺服器測試用 exports page 後就沒有用了
+app.use('/',express.static('public/css'))
+app.use('/cart',page)
+app.use(urlencoded)
+app.get('/',function(req,res){
+    res.render('index',{})
+})
 app.listen(3000,function(){
     console.clear()
     console.log(new Date().toLocaleDateString())

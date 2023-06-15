@@ -3,9 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>購物車</title>
+    <%- include('link') %>
 </head>
 <body>
-    這個是購物車
+    <%- include('../header')%>
+    <div class="col-12 container">
+        <div class="d-flex align-items-center">
+          <div class=" col-3">購物車</div>
+          <img
+            class=" col-9 d-flex justify-content-center img1000"
+            src="/public/img/icon/Group 322.png"
+            alt=""
+          />
+        </div>
+        <form class="col-12" action="/order" method="put" id="product">
+            <div class="borderclass mt-2">
+                <div class="d-flex ps-2 pe-5 align-items-center borderclass_1">
+                  <input class="img40" type="checkbox" id="UID001" /><a href=""
+                    ><img class="img40" src="public/img/icon/Home.png" alt=""
+                  /></a>
+                  <div class="ps-5"><%- product %></div>
+                  <div class="ps-5">聯絡賣家</div>
+                </div>
+                <div class="d-flex justify-content-between ps-2 pe-5 pt-3 pb-3 align-items-center cartFontSize" >
+                    <input class="img40" type="checkbox" id="UID001PID001" />
+                    <img
+                      class="img100"
+                      src="public/img/product/coffee006冰滴咖啡去背.png"
+                      alt=""
+                      />
+                    <div class="">商品aaa</div>
+                    <div class="">
+                      <div>租借日期</div>
+                      <div>2023/05/27</div>
+                    </div>
+                    <div class="">
+                      <div>歸還日期</div>
+                      <div>2023/05/29</div>
+                    </div>
+                    <div class="">
+                      <div>天數</div>
+                      <div>3天</div>
+                    </div>
+                    <div class="">
+                      <div>租金</div>
+                      <div>300元</div>
+                    </div>
+                    <div class="">
+                      <div>押金</div>
+                      <div>200元</div>
+                    </div>
+                    <div>刪除</div>
+                  </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        function load(){
+            let vamp = `
+            `
+            $('#product').append(vamp)
+        }
+        load()
+    </script>
 </body>
 </html>
