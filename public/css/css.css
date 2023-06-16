@@ -7,8 +7,8 @@ ul{
   .img1000 {
     width: 70%;
   }
-  .img40 {
-    margin: 30px;
+  .imgActive {
+    margin: 15px;
     width: 40px;
     height: 40px;
   }
@@ -22,7 +22,8 @@ ul{
     border: 2px solid black;
   }
   .borderclass_1 {
-    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
   }
   .check {
     border: 1px solid red;
@@ -46,9 +47,20 @@ ul{
     font-size: 2.5rem !important;
   }
   .cartFontSize{
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
   .changeActive{
     background-color: rgba(255, 255, 255, 0) !important;
     transition: 1s;
   }
+  .no-close .ui-dialog-titlebar {
+    display: none;
+}
+  .ui-dialog-buttopane {
+    height: 50px;
+    display: flex;
+    padding: auto;
+  }
+  .ui-button {
+     font-size: 1.5rem !important;
+}

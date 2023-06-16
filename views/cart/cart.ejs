@@ -18,54 +18,93 @@
           />
         </div>
         <form class="col-12" action="/order" method="put" id="product">
-            <div class="borderclass mt-2">
-                <div class="d-flex ps-2 pe-5 align-items-center borderclass_1">
-                  <input class="img40" type="checkbox" id="UID001" /><a href=""
-                    ><img class="img40" src="public/img/icon/Home.png" alt=""
+            <div class="mt-5">
+              <% for(let i=0;i<item.length;i++){%>
+                <div class="d-flex ps-2 pe-5 align-items-center borderclass">
+                  <input class="imgActive" type="checkbox" id="UID001" /><a href=""
+                    ><img class="imgActive" src="public/img/icon/Home.png" alt=""
                   /></a>
-                  <div class="ps-5"><%- product %></div>
+                  <div class="ps-5"><%- item[i].productUser %></div>
                   <div class="ps-5">聯絡賣家</div>
                 </div>
-                <div class="d-flex justify-content-between ps-2 pe-5 pt-3 pb-3 align-items-center cartFontSize" >
-                    <input class="img40" type="checkbox" id="UID001PID001" />
+                <%for(let o=0;o<item[i].product.length;o++){ %>
+                <div class="borderclass_1 d-flex justify-content-between align-items-center ps-2 pe-5 pt-3 pb-3 align-item[i]s-center cartFontSize" >
+                    <input class="imgActive" type="checkbox" id="UID001PID001" />
                     <img
                       class="img100"
-                      src="public/img/product/coffee006冰滴咖啡去背.png"
+                      src="<%- item[i].product[o].src %>"
                       alt=""
                       />
-                    <div class="">商品aaa</div>
+                    <div class=""><%- item[i].product[o].productName %></div>
                     <div class="">
                       <div>租借日期</div>
-                      <div>2023/05/27</div>
+                      <div><%- item[i].product[o].rentStart%></div>
                     </div>
                     <div class="">
                       <div>歸還日期</div>
-                      <div>2023/05/29</div>
+                      <div><%- item[i].product[o].rentEnd%></div>
                     </div>
                     <div class="">
                       <div>天數</div>
-                      <div>3天</div>
+                      <div><%- item[i].product[o].day%></div>
                     </div>
                     <div class="">
                       <div>租金</div>
-                      <div>300元</div>
+                      <div><%- item[i].product[o].rent%>元</div>
                     </div>
                     <div class="">
                       <div>押金</div>
-                      <div>200元</div>
+                      <div><%- item[i].product[o].deposit%>元</div>
                     </div>
-                    <div>刪除</div>
+                    <button  class="" onclick="eventpreventDefault(this)">刪除</button>
                   </div>
+                  <%}%>
+                  <%}%>
+                  <div class="mb-5" style="border: 1px solid black;"></div>
+                </div>
+              </form>
             </div>
-        </form>
-    </div>
+            <div id="check" class="d-flex justify-content-center align-items-center" >確定刪除資料嗎?</div>
     <script>
-        function load(){
-            let vamp = `
-            `
-            $('#product').append(vamp)
-        }
-        load()
+      function eventpreventDefault(e){
+        event.preventDefault()
+        $('#check').dialog("open");
+        $('#check').dialog({
+          buttons: {
+            '確定': function () {
+              $(e).parent().remove()
+              $(this).dialog("close");
+            },
+            '取消':function(){
+              $(this).dialog("close");
+            }
+          },
+        })
+      }
+      $('#check').dialog({
+        autoOpen: false,
+        height:400,
+        width:500,
+        dialogClass: "no-close",
+        show: {
+        effect: "blind",
+        duration: 500
+      },
+        hide: {
+        effect: "explode",
+        duration: 500
+      },
+        buttons: {
+          '確定': function () {
+            console.log(e)
+            $(this).dialog("close");
+          },
+          '取消':function(){
+            $(this).dialog("close");
+          }
+        },
+        modal:true,
+      })
     </script>
 </body>
 </html>
