@@ -64,3 +64,6 @@ ul{
   .ui-button {
      font-size: 1.5rem !important;
 }
+.cursorPointer {
+  cursor: pointer;
+}

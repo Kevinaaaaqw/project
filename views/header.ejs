@@ -4,8 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>header</title>
-    <!-- 引用各種連結 -->
-    <%- include('cart/link')%>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.css"
+    integrity="sha512-lp6wLpq/o3UVdgb9txVgXUTsvs0Fj1YfelAbza2Kl/aQHbNnfTYPMLiQRvy3i+3IigMby34mtcvcrh31U50nRw=="
+    crossorigin="anonymous"
+    />
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
+    integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw=="
+    crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../public/css/css.css" />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.js' integrity='sha512-ynDTbjF5rUHsWBjz7nsljrrSWqLTPJaORzSe5aGCFxOigRZRmwM05y+kuCtxaoCSzVGB1Ky3XeRZsDhbSLdzXQ==' crossorigin='anonymous'></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.css' integrity='sha512-lCk0aEL6CvAGQvaZ47hoq1v/hNsunE8wD4xmmBelkJjg51DauW6uVdaWEJlwgAE6PxcY7/SThs1T4+IMwwpN7w==' crossorigin='anonymous'/>
   </head>
   <body>
     <!-- 至頂導覽列框架 -->
@@ -23,16 +35,24 @@
           <a href="" class="ps-3 pe-3">快速上架</a>
           <a href="" class="ps-3 pe-3">關於我們</a>
         </div>
-        <div>
-          <img class="ps-3 pe-3" src="../public/img/icon/Heart.png" alt="" />
-          <a href="/cart"
-            ><img class="ps-3 pe-3" src="../public/img/icon/cart 4.png" alt=""
-          /></a>
-          <img
-            class="ps-3 pe-3"
-            src="../public/img/icon/user-interface 4.png"
-            alt=""
-          />
+        <div class="d-flex align-items-center pore justify-content-end position-relative">
+          <div class="">
+            <img class="ps-3 pe-3" src="../public/img/icon/Heart.png" alt="" />
+          </div>
+          <div class="">
+            <a href="/cart"
+              ><img class="ps-3 pe-3" src="../public/img/icon/cart 4.png" alt=""
+            /></a>
+          </div>
+          <!-- 會員功能按鈕 -->
+            <div id="memberBtn" class="cursorPointer">
+              <img
+                class="ps-3 pe-3"
+                src="../public/img/icon/user-interface 4.png"
+                alt=""
+              />
+            </div>
+          <div class="bg-info col-12" style="display:none; width: 200px; height: 200px; position: absolute; top:80px;"></div>
         </div>
       </div>
     </div>
@@ -47,6 +67,16 @@
           }
         };
       });
+      function memberDiv (){
+        $('#memberBtn').click(function(e){
+          if($(this).next().css('display')=='none'){
+            $(this).next().css('display','flex')
+          }else{
+            $(this).next().css('display','none')
+          }
+        })
+      }
+      memberDiv()
     </script>
   </body>
 </html>

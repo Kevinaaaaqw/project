@@ -9,31 +9,34 @@ page.get('/',function(req,res){
             productUser : "kevin",
             product :[
                 {
+                    CMID:'01',
                     src : "public/img/product/coffee006冰滴咖啡去背.png",
                     productName : "咖啡機",
                     rentStart : "2023/04/11",
                     rentEnd : "2023/04/15",
                     day : daye.getDate()-days.getDate(),
                     rent : "450",
-                    deposit : "1000"
+                    deposit : "888"
                 },
                 {
+                    CMID:'02',
                     src : "public/img/product/coffee006冰滴咖啡去背.png",
                     productName : "咖啡機",
                     rentStart : "2023/04/11",
                     rentEnd : "2023/04/15",
                     day : daye.getDate()-days.getDate(),
                     rent : "450",
-                    deposit : "1000"
+                    deposit : "999"
                 },
                 {
+                    CMID:'03',
                     src : "public/img/product/coffee006冰滴咖啡去背.png",
                     productName : "咖啡機",
                     rentStart : "2023/04/11",
                     rentEnd : "2023/04/15",
                     day : daye.getDate()-days.getDate(),
                     rent : "450",
-                    deposit : "1000"
+                    deposit : "344"
                 },
             ]
         },
@@ -41,31 +44,34 @@ page.get('/',function(req,res){
             productUser : "kevin",
             product :[
                 {
+                    CMID:'04',
                     src : "public/img/product/coffee006冰滴咖啡去背.png",
                     productName : "咖啡機",
                     rentStart : "2023/04/11",
                     rentEnd : "2023/04/15",
                     day : daye.getDate()-days.getDate(),
                     rent : "450",
-                    deposit : "1000"
+                    deposit : "600"
                 },
                 {
+                    CMID:'05',
                     src : "public/img/product/coffee006冰滴咖啡去背.png",
                     productName : "咖啡機",
                     rentStart : "2023/04/11",
                     rentEnd : "2023/04/15",
                     day : daye.getDate()-days.getDate(),
-                    rent : "450",
-                    deposit : "1000"
+                    rent : "430",
+                    deposit : "200"
                 },
             ]
         },
         ]
     })
 })
-page.get('/order',function(req,res){
-    let x= 
-    res.render('cart/order',{})
+page.post('/order',function(req,res){
+    console.log(req.params)
+    res.render('cart/order',{
+    })
 })
 page.get('/ordersuccess',function(req,res){
     res.render('cart/ordersuccess',{})
