@@ -125,11 +125,11 @@
             <div class="col-12 subTitle ps-4">立契約書人：</div>
             <ul class="ms-5">
               <li>
-                承租人：<span class="text-danger"><%- item[i].productUser %></span
+                承租人：<span class="text-danger">session.name</span
                 ><span class="text-dark">(以下簡稱甲方)</span>
               </li>
               <li>
-                出租人：<span class="text-danger">session.name</span
+                出租人：<span class="text-danger"><%- item[i].productUser %></span
                 ><span class="text-dark">(以下簡稱乙方)</span>
               </li>
             </ul>
@@ -172,7 +172,7 @@
                 面交時租公收取租金+押金， 共
                 <span class="text-danger"
                   >新臺幣
-                  <span id="totalPrice"><%- parseInt(item[i].product[o].rent)+parseInt(item[i].product[o].deposit)%></span>
+                  <span id="totalPrice"><%- item[i].product[o].total%></span>
                 </span>
                 <span class="text-dark">元</span>
               </li>
@@ -184,8 +184,7 @@
             <div class="col-12 subTitle ps-4">第一條 租賃協議：</div>
             <ul class="ms-5 col-12">
               一、產品租金
-              <li>平日（週二～週五）新臺幣<%- parseInt(item[i].product[o].rent)%>元</li>
-              <!-- <li>假日（週六～次週一）新臺幣700元</li> -->
+              <li>新臺幣<%- parseInt(item[i].product[o].rent)%>元</li>
             </ul>
             <ul class="ms-5">
               二、甲方如需延長承租時間，應提前確認產品後續無人承租，方可續租，並需提前於歸還日前12小時提出延長承租之要求，至多以延長兩次為限。(若有不可抗力之因素致無法如期歸還者除外)
@@ -218,7 +217,7 @@
                       disabled=""
                     />
                     <label for="current-available">
-                      <span class="text-danger">（商品aaa）</span>
+                      <span class="text-danger"><%- item[i].product[o].productName %></span>
                       <span class="text-dark">(本體+配件 共</span>
                       <span class="text-danger">1</span>
                       <span class="blaxck">項)</span>
@@ -237,9 +236,9 @@
             <div class="subTitle ps-4 col-12">第五條 歸還流程:</div>
             <ul class="ms-5">
               <span class="text-dark">甲方</span>
-              <span class="text-danger">黃********</span>
+              <span class="text-danger">session.name</span>
               <span class="text-dark">於民國 </span>
-              <span class="text-danger rentEnd">112年06月16日</span>
+              <span class="text-danger rentEnd"><%- item[i].product[o].yeare %></span>
               <span class="text-dark"
                 >歸還產品後，乙方確認無誤即完成歸還流程。</span
               >
@@ -304,13 +303,18 @@
       </div>
 <script>
     function toggle(e){
-        $(e).parent().next().toggle(500, "linear")
-        // if($(e).parent().next().css('height')=='0px'){
-        //     $(e).parent().next().css('height','auto')
-        // }else{
-        //     $(e).parent().next().css('height','0px')
-        // }
-        // console.log($(e).parent().next().css('height')=='0px')
+        let targetAnimationName = $(e).css('animationName')
+        $(e).parent().next().toggle(500, "linear");
+        $(e).css({
+            'animationFillMode' : `forwards`,
+            'animationDuration':'.5s'
+        })
+        console.log(targetAnimationName=='none')
+        if(targetAnimationName !='change1'){
+            $(e).css('animationName','change1')
+        }else{
+            $(e).css('animationName','change0')
+        }
     }
 </script>
 </body>

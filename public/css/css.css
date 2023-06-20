@@ -36,6 +36,10 @@ ul{
     display: grid;
     grid-template-columns: 6% 10% 12% 15% 15% 6% 10% 10% 10% 6%;
   }
+  .gridActive2{
+    display: grid;
+    grid-template-columns: 6% 64% 30%;
+  }
   .grid4{
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
@@ -70,4 +74,23 @@ ul{
 }
 .cursorPointer {
   cursor: pointer;
+}
+@keyframes change1 {
+  0% {
+      rotate: 0;
+  }
+
+  100% {
+      rotate: -90deg;
+  }
+}
+
+@keyframes change0 {
+  0% {
+      rotate: -90deg;
+  }
+
+  100% {
+      rotate: 0deg;
+  }
 }

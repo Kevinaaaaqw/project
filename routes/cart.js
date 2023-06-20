@@ -58,7 +58,8 @@ page.get('/order',function(req,res){
                 years:z(days),
                 yeare:z(daye),
                 rent : "450",
-                deposit : "888"
+                deposit : "888",
+                total:450*(daye.getDate()-days.getDate())+888
             }
         ]
     }

@@ -8,7 +8,7 @@
 </head>
 <body>
     <%- include('../header')%>
-    <div class="col-12 container">
+    <div class="m-5">
       <div class="d-flex align-items-center">
         <div class=" col-3">購物車</div>
         <img
@@ -23,7 +23,7 @@
           <% for(let i=0;i<item.length;i++){%>
           <div>
             <div class="d-flex ps-2 pe-5 align-items-center borderclass">
-              <input data-price="0" name="<%- item[i].productUser %>" value="<%- item[i].productUser %>" onclick="check(this);count()" class="imgActive" type="checkbox" id="UID001" />
+              <input data-price="0" name="productUser" value="<%- item[i].productUser %>" onclick="check(this);count()" class="imgActive" type="checkbox" id="UID001" />
                 <a href="">
                   <img class="imgActive" src="public/img/icon/Home.png" alt=""/>
                 </a>
@@ -61,7 +61,7 @@
                 <div class="d-flex"><div class="deposite"><%- item[i].product[o].deposit%></div>元</div>
               </div>
               <div class="">
-                <div>押金</div>
+                <div>總價</div>
                 <div class="d-flex"><div class="deposite"><%- item[i].product[o].total%></div>元</div>
               </div>
               <button  class="" onclick="eventpreventDefault(this)">刪除</button>
@@ -71,9 +71,10 @@
           <%}%>
                   <div class="mb-5" style="border: 1px solid black;"></div>
         </div>
-        <div class="container d-flex align-items-center justify-content-between">
-          <input data-price="0" name="selectAll" value="selectAll" onclick="check(this);count()" class="imgActive" type="checkbox"/><div class=" d-flex align-items-center">全選</div>
-          <div  class="col-10 justify-content-end d-flex"><div id="total">總計:0元</div><button onclick="send()" type="submit">下一步</button></div>
+        <div class="gridActive2 ps-2 align-items-center justify-content-between">
+          <input data-price="0" name="selectAll" value="selectAll" onclick="check(this);count()" class="imgActive" type="checkbox"/>全選
+          
+          <div  class="justify-content-end d-flex"><div id="total">總計:0元</div><button onclick="send()" type="submit">下一步</button></div>
         </div>
       </form>
     </div>
