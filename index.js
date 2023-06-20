@@ -1,6 +1,6 @@
 var express = require('express')
 var bodyParser = require('body-parser')
-var urlencoded = bodyParser.urlencoded()
+var urlencoded = bodyParser.urlencoded(({ extended: true }))
 var querystring = require('querystring')
 var coon = require('./routes/db')
 var page = require('./routes/cart.js')

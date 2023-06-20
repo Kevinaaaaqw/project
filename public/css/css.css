@@ -32,6 +32,10 @@ ul{
     display: grid;
     grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
   }
+  .gridActive{
+    display: grid;
+    grid-template-columns: 6% 10% 12% 15% 15% 6% 10% 10% 10% 6%;
+  }
   .grid4{
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
