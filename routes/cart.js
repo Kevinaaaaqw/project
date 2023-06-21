@@ -46,7 +46,13 @@ page.get('/order',function(req,res){
     // 後單接資料庫查詢
     res.render('cart/order',{item:[
         {
-        productUser : "非洲酋長",
+        productUserInfo : {
+            name :"非洲酋長",
+            id : '8787',
+            address : '公益路',
+            phoneNumber : '0921329292',
+            email:'kevin0987@gmail.com'
+        },
         product :[
             {
                 CMID:'aaaaa',
@@ -63,7 +69,21 @@ page.get('/order',function(req,res){
             }
         ]
     }
-]
+],
+
+//會員資料
+memberInfo :{
+    name : '景智大大',
+    id :'9487',
+    address :'公二路',
+    phoneNumber : '099999292',
+    email:'hook12222@gmail.com'
+},
+tradeType:{
+    mark:['7-11','ok','famly'],
+    pika:['宅配'],
+    poststation:['離島郵寄',]
+}
 
 
     })

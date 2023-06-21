@@ -42,6 +42,7 @@
             <%}%>
             <%}%>
           </div>
+          <!-- 填寫購買資料表單 -->
           <form
             class="d-flex flex-wrap justify-content-between mt-5 pb-5 align-items-center borderclass"
           >
@@ -116,11 +117,13 @@
           <!--  -->
           <!-- 契約書表單試做第001號 -->
           <% for(let i=0;i<item.length;i++){%>
+            <!-- 出租方 -->
+            <% let PUname = item[i].productUserInfo.name%>
             <%for(let o=0;o<item[i].product.length;o++){ %>
           <div
             class="col-12 mt-5 mb-5 pt-5 flex-wrap d-flex border-5 border border-info rounded-3 flex-row"
           >
-            <div class="col-12 text-center title d-flex align-items-center justify-content-center">海爾出租 租賃契約 <img onclick="toggle(this)" class="imgActive cursorPointer" src="/public/img/icon/left.png" alt=""></div>
+            <div class="col-12 text-center title d-flex align-items-center justify-content-center"><div onclick="toggle($(this).next())">海爾出租 租賃契約</div><img id="zzzz" onclick="toggle(this)" class="imgActive cursorPointer" src="/public/img/icon/left.png" alt=""></div>
             <div class="col-12 flex-wrap p-5 flex-row" style="display: none;">
             <div class="col-12 subTitle ps-4">立契約書人：</div>
             <ul class="ms-5">
@@ -129,7 +132,7 @@
                 ><span class="text-dark">(以下簡稱甲方)</span>
               </li>
               <li>
-                出租人：<span class="text-danger"><%- item[i].productUser %></span
+                出租人：<span class="text-danger"><%- PUname %></span
                 ><span class="text-dark">(以下簡稱乙方)</span>
               </li>
             </ul>
@@ -255,20 +258,20 @@
                   <h4 class="subTitle">甲方</h4>
                   <ul class="list">
                     <li>
-                      姓名：<span class="text-danger" id="name">黃********</span>
+                      姓名：<span class="text-danger" id="name"><%- memberInfo.name%></span>
                     </li>
                     <li>
                       身份證字號：<span class="text-danger" id="id_number"
-                        >N12********</span
+                        ><%- memberInfo.id%></span
                       >
                     </li>
-                    <li>地址：<span class="text-danger"> </span></li>
+                    <li>地址：<span class="text-danger"><%- memberInfo.address%></span></li>
                     <li>
                       行動電話：<span class="text-danger" id="phone_number"
-                        >098********
+                        ><%- memberInfo.phoneNumber%>
                       </span>
                     </li>
-                    <li>E-MAIL：<span class="text-danger">kev******** </span></li>
+                    <li>E-MAIL：<span class="text-danger"><%- memberInfo.email%></span></li>
                   </ul>
                 </div>
               </div>
@@ -276,15 +279,15 @@
                 <div class="profile-info-bk">
                   <h4 class="subTitle">乙方</h4>
                   <ul class="list">
-                    <li>姓名：<span class="text-danger">錡********</span></li>
+                    <li>姓名：<span class="text-danger"><%- PUname%></span></li>
                     <li>
-                      身份證字號：<span class="text-danger">244********</span>
+                      身份證字號：<span class="text-danger"><%-item[i].productUserInfo.id%></span>
                     </li>
-                    <li>地址：<span class="text-danger">新********</span></li>
+                    <li>地址：<span class="text-danger"><%-item[i].productUserInfo.address%></span></li>
                     <li>
-                      行動電話：<span class="text-danger">091********</span>
+                      行動電話：<span class="text-danger"><%-item[i].productUserInfo.phoneNumber%></span>
                     </li>
-                    <li>E-MAIL：<span class="text-danger">cov********</span></li>
+                    <li>E-MAIL：<span class="text-danger"><%-item[i].productUserInfo.email%></span></li>
                   </ul>
                 </div>
               </div>
@@ -302,6 +305,14 @@
         </div>
       </div>
 <script>
+    writeDateNow()
+    //契約書現在日期
+    function writeDateNow(){
+      let date = new Date()
+      $('.year').html(`${date.getFullYear()-1911}年`)
+      $('.month').html(`${(date.getMonth()+1).toString().padStart(2,'0')}月`)
+      $('.day').html(`${date.getDate()}日`)
+    }
     function toggle(e){
         let targetAnimationName = $(e).css('animationName')
         $(e).parent().next().toggle(500, "linear");
