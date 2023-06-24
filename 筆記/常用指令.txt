@@ -1,5 +1,5 @@
 npm init -y
-npm install express ejs mysql multer express-session cor create-react-app
+npm install express ejs mysql multer express-session cor create-react-app nodemon
 npm install body-parser --save
 npm list express
 npm list mysql
@@ -14,4 +14,5 @@ npm list multer
     multer              //功能:文件上傳到伺服器
     express-session     //功能:session網頁記憶體站存功能
     cor                 //功能:開放不同源網頁使用功能
+    nodemon             //功能:快速架設本地端伺服器
                         // 使用'-g'代表全域安裝，及該主機安裝一次即可
