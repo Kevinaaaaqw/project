@@ -51,23 +51,21 @@
               <div class="col-12 p-4 d-flex align-items-center">
                 寄送方式:
                 <select name="type" class="ms-5">
-                  <option value="type1">店到店</option>
-                  <option value="type2">宅配</option>
-                  <option value="type3">郵寄</option>
+                  <% for(let i=0 ; i<tradeType.mark.length;i++){%>
+                  <option value="type1"><%- tradeType.mark[i] %></option>
+                  <%}%>
                 </select>
               </div>
               <div class="col-12 p-4 d-flex align-items-center">
                 寄送地址:
                 <div class="ps-5">
-                  <select name="city" id="">
-                    <option value="taichun">台北市</option>
-                    <option value="taichun">台中市</option>
-                    <option value="taichun">台南市</option>
+                  <select name="city" id="city">
+                    <!-- 地址迴圈，我有能力用ejs也能用fetch-->
+                    <% for(let i=0 ; i<cityCountyData.length;i++){%>
+                    <option value="<%- cityCountyData[i].CityEngName %>"><%- cityCountyData[i].CityName%></option>
+                    <%}%>
                   </select>
-                  <select name="town" id="">
-                    <option value="nanton">南屯區</option>
-                    <option value="oru">烏日區</option>
-                    <option value="birdegg">鳥蛋區</option>
+                  <select name="town" id="town">
                   </select>
                   <input
                     type="text"
@@ -80,16 +78,9 @@
               </div>
               <div class="col-12 p-4 d-flex align-items-center">
                 付款方式:
-                <select name="paytype" class="ms-5">
-                  <option value="pay1">信用卡</option>
-                  <option value="pay2">轉帳</option>
-                  <option value="pay3">貨到付款</option>
+                <select name="paymentMethod"id="paymentMethod" class="ms-5">
                 </select>
                 <div class="d-flex align-items-center">
-                  <div class="ps-4">4477-1111-2222-xxxx</div>
-                  <div class="bg-info ms-5 rounded-4 ps-2 pe-2 pt-1 pb-1">
-                    更改
-                  </div>
                 </div>
               </div>
               <div
@@ -302,31 +293,122 @@
           </div>
           <%}%>
           <%}%>
+          <div id="MSGInfo" class="d-flex justify-content-center align-items-center" > aaaa</div>
         </div>
       </div>
 <script>
-    writeDateNow()
-    //契約書現在日期
-    function writeDateNow(){
-      let date = new Date()
-      $('.year').html(`${date.getFullYear()-1911}年`)
-      $('.month').html(`${(date.getMonth()+1).toString().padStart(2,'0')}月`)
-      $('.day').html(`${date.getDate()}日`)
+  //契約書現在日期
+  function writeDateNow(){
+    let date = new Date()
+    $('.year').html(`${date.getFullYear()-1911}年`)
+    $('.month').html(`${(date.getMonth()+1).toString().padStart(2,'0')}月`)
+    $('.day').html(`${date.getDate()}日`)
+  }
+  //開關契約書
+  function toggle(e){
+      let targetAnimationName = $(e).css('animationName')
+      $(e).parent().next().toggle(500, "linear");
+      $(e).css({
+        'animationFillMode' : `forwards`,
+        'animationDuration':'.5s'
+      })
+      console.log(targetAnimationName=='none')
+      if(targetAnimationName !='change1'){
+        $(e).css('animationName','change1')
+      }else{
+        $(e).css('animationName','change0')
+      }
     }
-    function toggle(e){
-        let targetAnimationName = $(e).css('animationName')
-        $(e).parent().next().toggle(500, "linear");
-        $(e).css({
-            'animationFillMode' : `forwards`,
-            'animationDuration':'.5s'
-        })
-        console.log(targetAnimationName=='none')
-        if(targetAnimationName !='change1'){
-            $(e).css('animationName','change1')
-        }else{
-            $(e).css('animationName','change0')
+  
+  //跳出視窗化
+    $('#MSGInfo').dialog({
+      autoOpen: false,
+      height:500,
+      width:500,
+      dialogClass: "no-close",
+      show: {
+        effect: "blind",
+        duration: 300
+      },
+      hide: {
+      effect: "blind",
+      duration: 300
+      },
+      buttons: {
+        '確定': function () {
+          $(this).dialog("close");
+        },
+        '取消':function(){
+          $(this).dialog("close");
         }
+      },
+      modal:true,
+    })
+
+  //開關資訊跳出視窗
+  function openCreaditInfo(target){
+    event.preventDefault()
+    target.dialog('open')
+    $.get()
+    target.html('5555')
+  }
+  
+  $(function(){
+    //選擇縣市改變地區
+    let changeCity = (e) => {
+      fetch('/CityCountyData.json')
+      .then(res=>res.json())
+      .then(res =>{
+        $(res).each((index,item)=>{
+          if(item.CityEngName == $('#city').val()){
+            let vamp =``
+            item.AreaList.map((item,index)=>{vamp +=`<option value="${item.AreaEngName}">${item.AreaName}</option>`})
+            $('#town').html(vamp)
+          }
+        })
+      })
     }
-</script>
+
+    // 付款方式
+    fetch('/paymentMethod.json')
+    .then(res=>res.json())
+    .then(res =>{
+      let payType = []
+      res.map((item,index)=>{
+        payType +=`<option value="${item.payTypeEngName}">${item.paymentMethod}</option>`
+      })
+      $('#paymentMethod').html(payType)
+    })
+    let changecard =  ()=>{
+      switch ($('#paymentMethod').val()) {
+        // 傳用戶信用卡資訊
+        case 'creditCards':
+          $.ajax({
+            method : "get",
+            url : "/cart/creditCards",
+            data:{},
+            dataType:"json",
+            success:(res)=>{
+              $('#paymentMethod').next().html(`<div class="ps-5">${res.cardNumber}</div>
+                <div onclick="openCreaditInfo($('#MSGInfo'))" class="bg-info ms-5 rounded-4 ps-2 pe-2 pt-1 pb-1 cursorPointer">
+                更改
+                </div>`)
+              },
+            })
+            break;
+            
+            default:
+              $('#paymentMethod').next().html('')
+              break;
+            }
+          }
+
+    $('#paymentMethod').change(changecard)
+    changeCity()
+    setTimeout(changecard,90)
+    $('#city').change(changeCity)
+    writeDateNow()
+  })
+  </script>
 </body>
 </html>
