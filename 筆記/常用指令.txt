@@ -1,6 +1,8 @@
 npm init -y
-npm install express ejs mysql multer express-session cor create-react-app nodemon
+npm install express ejs mysql multer express-session cor nodemon
 npm install body-parser --save
+npm install react-router-dom@5
+create-react-app 
 npm list express
 npm list mysql
 npm list multer
@@ -15,4 +17,6 @@ npm list multer
     express-session     //功能:session網頁記憶體站存功能
     cor                 //功能:開放不同源網頁使用功能
     nodemon             //功能:快速架設本地端伺服器
+    create-react-app    //功能:創建資料夾	
+    react-router-dom@5  //安裝路由且是第5版本
                         // 使用'-g'代表全域安裝，及該主機安裝一次即可

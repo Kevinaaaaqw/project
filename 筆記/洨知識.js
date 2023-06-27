@@ -52,3 +52,14 @@ app.delete("/restful",[function(req,res){
 app.put("/restful",[function(req,res){
     res.send('成功')
 }])
+
+
+// js中的 import 第一個參數接收該檔案的( export default)檔案，可以直接定義變數名稱，逗點後的參數會用{}接收參數名稱必須與輸出的相同。當該參數需要改名稱需在原名稱后加(as '新名稱')
+// example 
+import apple ,{bpple,cpple as dpple} from '路徑'
+
+//輸出檔案example  兩種
+
+export
+
+export default
