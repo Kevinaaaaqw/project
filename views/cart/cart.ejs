@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物車</title>
+    <%- include('link') %>
+</head>
+<body>
+    <%- include('../header')%>
+    <div class="m-5">
+      <div class="d-flex align-items-center">
+        <div class=" col-3">購物車</div>
+        <img
+          class=" col-9 d-flex justify-content-center img1000"
+          src="/public/img/icon/Group 322.png"
+          alt=""
+        />
+      </div>
+      <form class="col-12" action="cart/order" enctype="multipart/form-data" method="get" id="product">
+        <div class="mt-5">
+          <!-- 跑回圈調出所有賣家 -->
+          <% for(let i=0;i<item.length;i++){%>
+          <div>
+            <div class="d-flex ps-2 pe-5 align-items-center borderclass">
+              <input data-price="0" name="productUser" value="<%- item[i].productUser %>" onclick="check(this);count()" class="imgActive" type="checkbox" id="UID001" />
+                <a href="">
+                  <img class="imgActive" src="public/img/icon/Home.png" alt=""/>
+                </a>
+                <div class="ps-5"><%- item[i].productUser %></div>
+                <div class="ps-5">聯絡賣家</div>
+            </div>
+            <!-- 跑回圈調出同一位賣家的商品 -->
+            <%for(let o=0;o<item[i].product.length;o++){ %>
+            <div class="borderclass_1 gridActive justify-content-between align-items-center ps-2 pe-5 pt-3 pb-3 align-item[i]s-center cartFontSize" >
+              <input data-price="<%- item[i].product[o].total%>" onclick="count()" name="checkproduct" class="imgActive" value="<%- item[i].product[o].CMID %>" type="checkbox" id="UID001PID001" />
+              <img
+                class="img100"
+                src="<%- item[i].product[o].src %>"
+                alt=""
+              />
+              <div class=""><%- item[i].product[o].productName %></div>
+              <div class="">
+                <div>租借日期</div>
+                <div><%- item[i].product[o].rentStart%></div>
+              </div>
+              <div class="">
+                <div>歸還日期</div>
+                <div><%- item[i].product[o].rentEnd%></div>
+              </div>
+              <div class="">
+                <div>天數</div>
+                <div><%- item[i].product[o].day%></div>
+              </div>
+              <div class="">
+                <div>租金/天</div>
+                <div class="d-flex"><div class="rent"><%- item[i].product[o].rent%></div>元</div>
+              </div>
+              <div class="">
+                <div>押金</div>
+                <div class="d-flex"><div class="deposite"><%- item[i].product[o].deposit%></div>元</div>
+              </div>
+              <div class="">
+                <div>總價</div>
+                <div class="d-flex"><div class="deposite"><%- item[i].product[o].total%></div>元</div>
+              </div>
+              <button  class="" onclick="eventpreventDefault(this)">刪除</button>
+            </div>
+          <%}%>
+          </div>
+          <%}%>
+                  <div class="mb-5" style="border: 1px solid black;"></div>
+        </div>
+        <div class="gridActive2 ps-2 align-items-center justify-content-between">
+          <input data-price="0" name="selectAll" value="selectAll" onclick="check(this);count()" class="imgActive" type="checkbox"/>全選
+          
+          <div  class="justify-content-end d-flex"><div id="total">總計:0元</div><button onclick="send()" type="submit">下一步</button></div>
+        </div>
+      </form>
+    </div>
+            <div id="check" class="d-flex justify-content-center align-items-center" ></div>
+            
+            
+            <script>
+              function send(){
+                let i = 0
+                $("input[name=checkproduct]").each(function(index,item){
+                  if(item.checked){
+                    i++
+                  }
+                })
+                if(!i){
+                  event.preventDefault()
+                  $('#check').html("沒有勾選付款商品");
+                  $('#check').dialog("open");
+                  $('#check').dialog({
+                    buttons: {
+                      '確定': function () {
+                        $(this).dialog("close");
+                      }
+                    }
+                    })
+                }
+        
+      }
+      function count(){
+        let total =0
+        $('input').each(function(index,item){
+          if(item.checked==1){
+          let z = $(item).attr('data-price')
+          total +=parseInt(z)
+           }
+          }
+        )
+        $('#total').html(`總計:${total}元 `)
+      }
+      function check(e){
+        if(e.checked==1){
+          $(e).parent().parent().find('input').each(function(){
+            this.checked=1
+          })
+        }else{
+          $(e).parent().parent().find('input').each(function(){
+            this.checked=0
+          })
+        }
+        }
+      function eventpreventDefault(e){
+        event.preventDefault()
+        $('#check').html("確定刪除資料嗎?");
+        $('#check').dialog("open");
+        $('#check').dialog({
+          buttons: {
+            '確定': function () {
+              $(e).parent().remove();
+              count();
+              $(this).dialog("close");
+            },
+            '取消':function(){
+              $(this).dialog("close");
+            }
+          },
+        })
+      }
+      $('#check').dialog({
+        autoOpen: false,
+        height:400,
+        width:500,
+        dialogClass: "no-close",
+        show: {
+        effect: "blind",
+        duration: 500
+      },
+        hide: {
+        effect: "explode",
+        duration: 500
+      },
+        buttons: {
+          '確定': function () {
+            $(this).dialog("close");
+          },
+          '取消':function(){
+            $(this).dialog("close");
+          }
+        },
+        modal:true,
+      })
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <canvas
+      id="apple"
+      width="1000px"
+      height="500px"
+      style="background-color: lightyellow"
+    ></canvas>
+    <p>
+      <label for="" id="target1">0</label>
+      <label for="" id="target2">0</label>
+      <script>
+        $(function () {
+          let start = [-1, -1];
+          $("#apple").mousemove(function (event) {
+            let ctx = $("#apple")[0].getContext("2d");
+            if (event.buttons == 1) {
+              if (start[0] == -1 && start[1] == -1) {
+                console.log("aaa");
+                start[0] = event.offsetX;
+                start[1] = event.offsetY;
+            }
+            $("#target1").html(`X=${event.offsetX}`);
+            $("#target2").html(`Y=${event.offsetY}`);
+            ctx.beginPath();
+            ctx.lineWidth = "2";
+            ctx.strokeStyle = "green";
+            ctx.moveTo(start[0], start[1]);
+            ctx.lineTo(event.offsetX, event.offsetY);
+            ctx.stroke();
+            start[0] = event.offsetX;
+            start[1] = event.offsetY;
+            }
+        })
+        $("#apple").mouseup(function(){
+            start[0] = -1;
+            start[1] = -1;
+            console.log("bbb");
+          });
+        });
+      </script>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訂單確認</title>
+    <%- include('link') %>
+</head>
+<body>
+    <%- include('../header')%>
+    <div class="col-12 pt-5 container">
+        <div class="d-flex align-items-center">
+          <div class="p-4 col-3 subTitle">訂單確認</div>
+          <img
+            class="p-4 col-9 d-flex justify-content-center img1000"
+            src="/public/img/icon/Group 330.png"
+            alt=""
+          />
+        </div>
+        <div id="carttain" class="col-12">
+          <div
+            class="d-flex flex-wrap justify-content-between p-5 align-items-center borderclass"
+          >
+            <div class="grid6 col-12 text-center m-4">
+              <div>商品名稱</div>
+              <div>租借日期</div>
+              <div>歸還日期</div>
+              <div>天數</div>
+              <div>租金</div>
+              <div>押金</div>
+            </div>
+            <% for(let i=0;i<item.length;i++){%>
+                <%for(let o=0;o<item[i].product.length;o++){ %>
+                <div class="grid6 col-12 text-center m-4">
+                <div><%- item[i].product[o].productName %></div>
+                <div><%- item[i].product[o].rentStart%></div>
+                <div><%- item[i].product[o].rentEnd%></div>
+                <div><%- item[i].product[o].day%>天</div>
+                <div><%- item[i].product[o].rent%>元</div>
+                <div><%- item[i].product[o].deposit%>元</div>
+                </div>
+            <%}%>
+            <%}%>
+          </div>
+          <!-- 填寫購買資料表單 -->
+          <form
+            class="d-flex flex-wrap justify-content-between mt-5 pb-5 align-items-center borderclass"
+          >
+            <div class="d-flex flex-wrap col-12 m-4">
+              <div class="col-12 p-4">寄送資訊</div>
+              <div class="col-12 p-4 d-flex align-items-center">
+                寄送方式:
+                <select name="type" class="ms-5">
+                  <% for(let i=0 ; i<tradeType.mark.length;i++){%>
+                  <option value="type1"><%- tradeType.mark[i] %></option>
+                  <%}%>
+                </select>
+              </div>
+              <div class="col-12 p-4 d-flex align-items-center">
+                寄送地址:
+                <div class="ps-5">
+                  <select name="city" id="city">
+                    <!-- 地址迴圈，我有能力用ejs也能用fetch-->
+                    <% for(let i=0 ; i<cityCountyData.length;i++){%>
+                    <option value="<%- cityCountyData[i].CityEngName %>"><%- cityCountyData[i].CityName%></option>
+                    <%}%>
+                  </select>
+                  <select name="town" id="town">
+                  </select>
+                  <input
+                    type="text"
+                    placeholder="請輸入地址"
+                    value="公益路二段51號18樓"
+                  />
+                </div>
+                <div class="ms-4">運費:</div>
+                <div class="">30元 <input type="hidden" value="" /></div>
+              </div>
+              <div class="col-12 p-4 d-flex align-items-center">
+                付款方式:
+                <select name="paymentMethod"id="paymentMethod" class="ms-5">
+                </select>
+                <div class="d-flex align-items-center">
+                </div>
+              </div>
+              <div
+                class="col-12 p-4 d-flex align-items-center justify-content-end"
+              ></div>
+              <div
+                class="col-12 p-4 d-flex align-items-center justify-content-end"
+              >
+                <div class="d-flex justify-content-between ms-5 col-3">
+                  <div class="">總金額:</div>
+                  <div class="me-5">3000元 <input type="hidden" value="" /></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+              <button class="m-5" type="reset">取消</button
+              ><button class="m-5" type="submit">送出預約</button>
+            </div>
+            <div class="col-12 text-center">
+              點選「送出預約」，即表示同意以下租賃契約。
+            </div>
+          </form>
+          <!--  -->
+          <!--  -->
+          <!--  -->
+          <!-- 契約書表單試做第001號 -->
+          <% for(let i=0;i<item.length;i++){%>
+            <!-- 出租方 -->
+            <% let PUname = item[i].productUserInfo.name%>
+            <%for(let o=0;o<item[i].product.length;o++){ %>
+          <div
+            class="col-12 mt-5 mb-5 pt-5 flex-wrap d-flex border-5 border border-info rounded-3 flex-row"
+          >
+            <div class="col-12 text-center title d-flex align-items-center justify-content-center"><div onclick="toggle($(this).next())">海爾出租 租賃契約</div><img id="zzzz" onclick="toggle(this)" class="imgActive cursorPointer" src="/public/img/icon/left.png" alt=""></div>
+            <div class="col-12 flex-wrap p-5 flex-row" style="display: none;">
+            <div class="col-12 subTitle ps-4">立契約書人：</div>
+            <ul class="ms-5">
+              <li>
+                承租人：<span class="text-danger">session.name</span
+                ><span class="text-dark">(以下簡稱甲方)</span>
+              </li>
+              <li>
+                出租人：<span class="text-danger"><%- PUname %></span
+                ><span class="text-dark">(以下簡稱乙方)</span>
+              </li>
+            </ul>
+            <div class="col-12 subTitle ps-4">承租品明細：</div>
+            <ul class="ms-5">
+              <li>出租品項：<span class="text-danger"><%- item[i].product[o].productName %></span></li>
+              <li>
+                承租起迄日：
+                <span class="text-dark">自</span>
+                <span class="text-danger">
+                  民國
+                  <span class="rentStart"><%- item[i].product[o].years%></span>
+                </span>
+                <span class="text-dark">至</span>
+                <span class="text-danger">
+                  民國
+                  <span class="rentEnd"><%- item[i].product[o].yeare%></span>
+                </span>
+                <span class="text-dark">， 共</span>
+                <span class="text-danger countDate"><%- item[i].product[o].day%></span>
+                <span class="text-dark">天</span>
+              </li>
+              <li>
+                租金：
+                <span class="text-danger"
+                  >新臺幣
+                  <span id="renterPrice2"><%- item[i].product[o].rent%></span>
+                </span>
+                <span class="text-dark">元</span>
+              </li>
+              <li>
+                押金：
+                <span class="text-danger"
+                  >新臺幣
+                  <span><%- item[i].product[o].deposit%></span>
+                </span>
+                <span class="text-dark">元</span>
+              </li>
+              <li>
+                面交時租公收取租金+押金， 共
+                <span class="text-danger"
+                  >新臺幣
+                  <span id="totalPrice"><%- item[i].product[o].total%></span>
+                </span>
+                <span class="text-dark">元</span>
+              </li>
+              <li>歸還時確認無誤後，現場退還押金</li>
+            </ul>
+            <div class="col-12 subTitle ps-4">
+              茲因甲乙雙方進行家電租賃乙事，雙方特立本契約書，其協議範圍為本契約書指定品項之承租事宜，雙方同意按下列之約定進行各項事宜：
+            </div>
+            <div class="col-12 subTitle ps-4">第一條 租賃協議：</div>
+            <ul class="ms-5 col-12">
+              一、產品租金
+              <li>新臺幣<%- parseInt(item[i].product[o].rent)%>元</li>
+            </ul>
+            <ul class="ms-5">
+              二、甲方如需延長承租時間，應提前確認產品後續無人承租，方可續租，並需提前於歸還日前12小時提出延長承租之要求，至多以延長兩次為限。(若有不可抗力之因素致無法如期歸還者除外)
+            </ul>
+            <ul class="ms-5">
+              三、本協議書乙式貳份，甲乙雙方各執正本乙份。
+            </ul>
+            <ul class="ms-5">
+              四、甲方於租賃前,應主動告知乙方所清潔區域是否有人感染法定傳染病,以便乙方後續清潔事宜。
+            </ul>
+            <ul class="ms-5">
+              五、如有本協議未盡之事宜，得經由雙方共同合議解決。
+            </ul>
+            <div class="subTitle ps-4 col-12">第二條 損壞賠償：</div>
+            <ul class="ms-5">
+              甲方承租前，需確實檢查品項功能正常，乙方亦須主動告知產品現狀，如非正常使用以致損壞，甲方需依實際維修費用照價賠償於乙方。
+            </ul>
+            <div class="subTitle ps-4 col-12">
+              第三條 產品點交表：(請務必確認產品功能正常)
+            </div>
+            <ul class="ms-5 col-12">
+              <li>
+                <div class="checkedlist hp-form-group col-sm-12">
+                  <div class="filter-checkbox display-f">
+                    <input
+                      class="img40"
+                      type="checkbox"
+                      name=""
+                      checked=""
+                      disabled=""
+                    />
+                    <label for="current-available">
+                      <span class="text-danger"><%- item[i].product[o].productName %></span>
+                      <span class="text-dark">(本體+配件 共</span>
+                      <span class="text-danger">1</span>
+                      <span class="blaxck">項)</span>
+                    </label>
+                  </div>
+                </div>
+              </li>
+              <li>※若產品含有電子晶片，切勿碰水，如造成損壞依賠償之規定進行。</li>
+            </ul>
+            <div class="subTitle ps-4 col-12">第四條 違約處理：</div>
+            <ul class="ms-5">
+              <li>
+                甲方租借如逾期，若未提前12小時提出延長承租之要求，則需支付產品租金兩倍罰金於乙方。(若有不可抗力之因素致無法如期歸還者除外)
+              </li>
+            </ul>
+            <div class="subTitle ps-4 col-12">第五條 歸還流程:</div>
+            <ul class="ms-5">
+              <span class="text-dark">甲方</span>
+              <span class="text-danger">session.name</span>
+              <span class="text-dark">於民國 </span>
+              <span class="text-danger rentEnd"><%- item[i].product[o].yeare %></span>
+              <span class="text-dark"
+                >歸還產品後，乙方確認無誤即完成歸還流程。</span
+              >
+            </ul>
+            <div class="subTitle ps-4 col-12">第六條</div>
+            <ul class="ms-5">
+              <li class="text-dark">
+                如因本契約所發生之一切爭議，如有訴訟之必要，雙方合議由臺灣臺北地方法院為第一審管轄法院。
+              </li>
+            </ul>
+            <div class="d-flex col-12 flex-wrap ps-4">
+              <div class="col-12 col-lg-6">
+                <div class="profile-info-bk">
+                  <h4 class="subTitle">甲方</h4>
+                  <ul class="list">
+                    <li>
+                      姓名：<span class="text-danger" id="name"><%- memberInfo.name%></span>
+                    </li>
+                    <li>
+                      身份證字號：<span class="text-danger" id="id_number"
+                        ><%- memberInfo.id%></span
+                      >
+                    </li>
+                    <li>地址：<span class="text-danger"><%- memberInfo.address%></span></li>
+                    <li>
+                      行動電話：<span class="text-danger" id="phone_number"
+                        ><%- memberInfo.phoneNumber%>
+                      </span>
+                    </li>
+                    <li>E-MAIL：<span class="text-danger"><%- memberInfo.email%></span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-12 col-lg-6">
+                <div class="profile-info-bk">
+                  <h4 class="subTitle">乙方</h4>
+                  <ul class="list">
+                    <li>姓名：<span class="text-danger"><%- PUname%></span></li>
+                    <li>
+                      身份證字號：<span class="text-danger"><%-item[i].productUserInfo.id%></span>
+                    </li>
+                    <li>地址：<span class="text-danger"><%-item[i].productUserInfo.address%></span></li>
+                    <li>
+                      行動電話：<span class="text-danger"><%-item[i].productUserInfo.phoneNumber%></span>
+                    </li>
+                    <li>E-MAIL：<span class="text-danger"><%-item[i].productUserInfo.email%></span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="row col-12 mt-5 pt-5 mb-5">
+              <div class="col-12 text-center">
+                中華民國 <span class="year">112 年 </span
+                ><span class="month">06 月 </span><span class="day">12 日</span>
+              </div>
+            </div>
+            </div>
+          </div>
+          <%}%>
+          <%}%>
+          <div id="MSGInfo" class="d-flex justify-content-center align-items-center" > aaaa</div>
+        </div>
+      </div>
+<script>
+  //契約書現在日期
+  function writeDateNow(){
+    let date = new Date()
+    $('.year').html(`${date.getFullYear()-1911}年`)
+    $('.month').html(`${(date.getMonth()+1).toString().padStart(2,'0')}月`)
+    $('.day').html(`${date.getDate()}日`)
+  }
+  //開關契約書
+  function toggle(e){
+      let targetAnimationName = $(e).css('animationName')
+      $(e).parent().next().toggle(500, "linear");
+      $(e).css({
+        'animationFillMode' : `forwards`,
+        'animationDuration':'.5s'
+      })
+      console.log(targetAnimationName=='none')
+      if(targetAnimationName !='change1'){
+        $(e).css('animationName','change1')
+      }else{
+        $(e).css('animationName','change0')
+      }
+    }
+  
+  //跳出視窗化
+    $('#MSGInfo').dialog({
+      autoOpen: false,
+      height:500,
+      width:500,
+      dialogClass: "no-close",
+      show: {
+        effect: "blind",
+        duration: 300
+      },
+      hide: {
+      effect: "blind",
+      duration: 300
+      },
+      buttons: {
+        '確定': function () {
+          $(this).dialog("close");
+        },
+        '取消':function(){
+          $(this).dialog("close");
+        }
+      },
+      modal:true,
+    })
+
+  //開關資訊跳出視窗
+  function openCreaditInfo(target){
+    event.preventDefault()
+    target.dialog('open')
+    $.get()
+    target.html('5555')
+  }
+  
+  $(function(){
+    //選擇縣市改變地區
+    let changeCity = (e) => {
+      fetch('/CityCountyData.json')
+      .then(res=>res.json())
+      .then(res =>{
+        $(res).each((index,item)=>{
+          if(item.CityEngName == $('#city').val()){
+            let vamp =``
+            item.AreaList.map((item,index)=>{vamp +=`<option value="${item.AreaEngName}">${item.AreaName}</option>`})
+            $('#town').html(vamp)
+          }
+        })
+      })
+    }
+
+    // 付款方式
+    fetch('/paymentMethod.json')
+    .then(res=>res.json())
+    .then(res =>{
+      let payType = []
+      res.map((item,index)=>{
+        payType +=`<option value="${item.payTypeEngName}">${item.paymentMethod}</option>`
+      })
+      $('#paymentMethod').html(payType)
+    })
+    let changecard =  ()=>{
+      switch ($('#paymentMethod').val()) {
+        // 傳用戶信用卡資訊
+        case 'creditCards':
+          $.ajax({
+            method : "get",
+            url : "/cart/creditCards",
+            data:{},
+            dataType:"json",
+            success:(res)=>{
+              $('#paymentMethod').next().html(`<div class="ps-5">${res.cardNumber}</div>
+                <div onclick="openCreaditInfo($('#MSGInfo'))" class="bg-info ms-5 rounded-4 ps-2 pe-2 pt-1 pb-1 cursorPointer">
+                更改
+                </div>`)
+              },
+            })
+            break;
+            
+            default:
+              $('#paymentMethod').next().html('')
+              break;
+            }
+          }
+
+    $('#paymentMethod').change(changecard)
+    changeCity()
+    setTimeout(changecard,90)
+    $('#city').change(changeCity)
+    writeDateNow()
+  })
+  </script>
+</body>
+</html>
