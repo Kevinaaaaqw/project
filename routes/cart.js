@@ -29,9 +29,19 @@ page.get('/',function(req,res){
         {
         productUser : "非洲酋長",
         product :[
+            obj,
+            obj,
             obj
                 ]
         },
+        {
+        productUser : "非洲酋長",
+        product :[
+            obj,
+            obj,
+            obj
+                ]
+        }
         ]
     })
 })
@@ -49,6 +59,22 @@ page.get('/order',function(req,res){
             email:'kevin0987@gmail.com'
         },
         product :[
+            obj,
+            obj,
+            obj
+        ]
+    },
+        {
+        productUserInfo : {
+            name :"非洲酋長",
+            id : '8787',
+            address : '公益路',
+            phoneNumber : '0921329292',
+            email:'kevin0987@gmail.com'
+        },
+        product :[
+            obj,
+            obj,
             obj
         ]
     }
