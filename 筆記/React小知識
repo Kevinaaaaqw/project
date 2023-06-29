@@ -1,3 +1,17 @@
 在路由中 沒有加入exact表示路由網址後有加入其他路徑例如  /example  如果沒有該頁簽還是會顯示前面網址的頁面，有加入則會顯示錯誤頁面之類的(如果又建立錯誤頁面)。
 
 在React中使用<NavLink><NavLink/>同等於使用<a><a/>標籤，但是建議使用前者，原因是在未來改版後可能有更新功能在該標籤上。
+
+
+使用 await等待程式執行範例
+                        先宣告
+    componentDidMount = async () => {
+        //抓取後端資料  await等待
+        let obj = await axios("http://localhost:8000/todo/list");
+        //複製原本的資料
+        let newstate = { ...this.state };
+        //更新部分資料
+        newstate.list = obj.data;
+        //重新覆蓋資料
+        this.setState(newstate);
+      };

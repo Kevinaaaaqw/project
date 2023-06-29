@@ -6,7 +6,7 @@
     <title>訂單確認</title>
     <%- include('link') %>
 </head>
-<body>
+<body class="">
     <%- include('../header')%>
     <div class="col-12 pt-5 container">
         <div class="d-flex align-items-center">
@@ -43,7 +43,8 @@
             <%}%>
           </div>
           <!-- 填寫購買資料表單 -->
-          <form
+          <form 
+          action="/cart/ordersuccess"
             class="d-flex flex-wrap justify-content-between mt-5 pb-5 align-items-center borderclass"
           >
             <div class="d-flex flex-wrap col-12 m-4">

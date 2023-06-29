@@ -1,9 +1,10 @@
 npm init -y
-npm install express ejs mysql multer express-session cor nodemon -g
+npm install express ejs mysql multer express-session cor nodemon 
 npm install body-parser --save
 
 create-react-app 
 npm install react-router-dom@5
+npm install axios
 
 npm list express
 npm list mysql
