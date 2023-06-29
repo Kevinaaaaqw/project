@@ -15,3 +15,6 @@
         //重新覆蓋資料
         this.setState(newstate);
       };
+
+父層儲存的變數
+this.props.match.params.id
