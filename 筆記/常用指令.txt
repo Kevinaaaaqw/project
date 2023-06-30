@@ -1,5 +1,5 @@
 npm init -y
-npm install express ejs mysql multer express-session cor nodemon 
+npm install express ejs mysql multer express-session cor nodemon jquery
 npm install body-parser --save
 
 create-react-app 

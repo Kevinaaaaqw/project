@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      body > div {
+        font-family: sans-serif;
+        font-size: 1.25em;
+        border: 1px solid gray;
+        padding: 20px;
+        margin: 20px;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app4">
+      <ol>
+        <li v-for="todoItem in todoList" v-on:click="itemClick(todoItem)">
+          {{ todoItem.text }}
+        </li>
+      </ol>
+    </div>
+
+    <div id="pika">{{ message}}</div>
+    <div id="pika2">{{ message}}</div>
+    <div id="pika3" @keypress.enter="click()" @click="click(this)">
+      <span v-if="aaaa">{{message}}</span>
+    </div>
+    <div id="pika4">
+      <ul>
+        <li v-for="(item,index) in todolist" v-bind:title="item.text">
+          {{item.text}}-- {{item.id}}
+        </li>
+      </ul>
+    </div>
+    <script>
+      var app4 = new Vue({
+        el: "#app4",
+        data: {
+          todoList: [
+            { text: "Learn JavaScript" },
+            { text: "Learn Vue" },
+            { text: "Build something awesome" },
+          ],
+        },
+        methods: {
+          itemClick: function (e) {
+            alert(e.text);
+          },
+        },
+      });
+
+      var apple = new Vue({
+        el: "#pika",
+        data: {
+          message: "Hellow Vue",
+        },
+      });
+      var bee = new Vue({
+        el: "#pika2",
+        data: {
+          message: `載入時間:${new Date().toLocaleTimeString()}`,
+        },
+      });
+      var cat = new Vue({
+        el: "#pika3",
+        data: {
+          message: `載入時間:${new Date().toLocaleTimeString()}`,
+          aaaa: true,
+        },
+        methods: {
+          click: function (e) {
+            // console.log(cat.aaaa);
+            cat.aaaa ? (cat.aaaa = 0) : (cat.aaaa = 1);
+          },
+        },
+      });
+      var dog = new Vue({
+        el: "#pika4",
+        data: {
+          todolist: [
+            {
+              id: 1,
+              text: "job A",
+            },
+            {
+              id: 2,
+              text: "job B",
+            },
+            {
+              id: 3,
+              text: "job C",
+            },
+          ],
+        },
+      });
+    </script>
+  </body>
+</html>

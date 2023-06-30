@@ -1,0 +1,48 @@
+<!-- 
+    參考資料
+    https://vuejs.org/v2/guide/render-function.html 
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+
+    <div id="lab">
+        <anchored-heading :level="1">Hello world! 1</anchored-heading>
+        <anchored-heading :level="2">Hello world! 2</anchored-heading>
+        <anchored-heading :level="3">Hello world! 3</anchored-heading>
+    </div>
+   
+
+
+
+
+<script>
+
+Vue.component('anchored-heading', {
+  render: function (createElement) {
+    return createElement(
+      'h' + this.level,   // tag name
+      this.$slots.default // array of children
+    )
+  },
+  props: {
+    level: 1
+  }
+})
+
+var labApp = new Vue({
+    el: "#lab"
+})
+
+
+</script>
+
+</body>
+</html>
